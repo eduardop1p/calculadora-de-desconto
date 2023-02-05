@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora App Gorjeta</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+  <main>
+    <h3 class="criador">Criado por: <a target="_blanck" href="https://www.instagram.com/yfg.eduardo/">@yfg.eduardo</a></h3>
+    <section>
+      <div class="layout-1">
+        <div class="layout-bloco">
+          <h5>Valor da conta</h5>
+          <div class="calculo-input">
+            <img src="./assets/images/icon-dollar.svg" alt="">
+            <input type="text" name="calcular" id="calcular" placeholder="0">
+          </div>
+        </div>
+  
+        <div class="layout-bloco">
+          <h5>Desconto de gorjeta atual <span class="pocentagemAtual">0%</span></h5>
+          <div class="porcent-custom">
+            <div class="porcent">5%</div>
+            <div class="porcent">10%</div>
+            <div class="porcent">15%</div>
+            <div class="porcent">25%</div>
+            <div class="porcent">30%</div>
+            <div class="porcent">50%</div>
+            <div class="porcent">75%</div>
+            <div class="custom"><input type="text" name="custom" id="customInput" placeholder="Custom"></div>
+          </div>
+        </div>
+  
+        <div class="layout-bloco">
+          <h5>Numero de pessoas a dar gorjeta</h5>
+          <div class="number-people">
+            <img src="./assets/images/icon-person.svg" alt="">
+            <input type="text" name="numero pessoas" id="numberPeople" placeholder="0">
+          </div>
+        </div>
+      </div>
+
+      <div class="layout-2">
+        <div class="gojeta">
+          <div>
+            <h5>Valor da gorjeta</h5>
+            <h6 class="person">/ A pagar por pessoa</h6>
+          </div>
+          <div class="resultValues"><span class="R">R</span>
+            <img src="./assets/images/icon-dollar copy.svg" alt="">
+            <span class="valor-gojeta">0.00</span>
+          </div>
+        </div>
+  
+        <div class="total">
+          <div>
+            <h5>Valor total</h5>
+            <h6 class="person">/ A pagar de gorjetas</h6>
+          </div>
+          <div class="resultValues"><span class="R">R</span>
+            <img src="./assets/images/icon-dollar copy.svg" alt="">
+            <span class="valor-total">0.00</span>
+          </div>
+        </div>
+
+        <button id="calcularTotal" type="button">CALCULAR</button>
+      </div>
+    </section>
+  </main>
+  <script src="./assets/js/index.js"></script>
+</body>
+</html>

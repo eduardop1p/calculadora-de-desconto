@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+/* cores
+- Strong cyan: hsl(172, 67%, 45%)
+
+- Very dark cyan: hsl(183, 100%, 15%)
+- Dark grayish cyan: hsl(186, 14%, 43%)
+- Dark grayish cyan: hsl(184, 14%, 56%)
+- Light grayish cyan: hsl(185, 41%, 84%)
+- Light grayish cyan: hsl(189, 41%, 97%)
+- White: hsl(0, 0%, 100%)
+
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Space Mono", monospace;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: hsl(185, 41%, 84%)
+}
+
+.criador{
+    font-size: 10px;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: hsl(183, 100%, 15%)
+}
+
+section{
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    width: 750px;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 1rem;
+}
+
+.layout-1{
+    width: 340px;
+}
+
+.layout-bloco{
+    margin-bottom: 1rem;
+}
+
+.layout-bloco > h5{
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: hsl(186, 14%, 43%)
+}
+
+.layout-1 img{
+    width: 10px;
+}
+
+.calculo-input, .number-people{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    padding: 7px 14px;
+    background-color: hsl(189, 41%, 97%);
+}
+.inputFocus{
+    outline: 2px solid hsl(172, 67%, 45%);
+}
+
+.calculo-input > :last-child, .number-people > :last-child{
+    text-align: right;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    color: hsl(188, 10%, 43%);
+    font-weight: 700;
+    background-color: hsl(189, 41%, 97%);
+}
+
+.layout-2{
+    width: 340px;
+    padding: 2rem;
+    background-color: hsl(183, 100%, 15%);
+    border-radius: 10px;
+}
+
+.porcent-custom{
+    display: grid;
+    grid-template: 30px 30px / 70px 70px 70px 70px;;
+    grid-gap: 10px;
+}
+
+.porcent{
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(183, 100%, 15%);
+    transition: all 0.2s  ease-in-out;
+}
+.pocentActived{ 
+    color: hsl(183, 100%, 15%);
+    background-color: hsl(172, 67%, 45%);
+
+}
+
+.custom{
+    background-color: hsl(189, 41%, 97%);
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+#customInput{
+    color: hsl(183, 100%, 15%);
+    text-align: center;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    font-weight: 700;
+    background-color: hsl(189, 41%, 97%);
+}
+.customInFocus{
+    outline: 2px solid hsl(172, 67%, 45%)
+}
+
+.gojeta, .total{
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.layout-2 img{
+    width: 1rem;
+}
+
+.valor-total, .valor-gojeta{
+    font-size: 1.7rem;
+    margin-left: 5px;
+    color: hsl(172, 67%, 45%);
+    font-weight: 700;
+}
+
+.resultValues{
+    display: flex;
+    align-items: center;
+}
+
+.gojeta h5, .total h5{
+    color: hsl(0, 0%, 100%);
+    font-size: 12px;
+}
+
+.person{
+    color: hsl(184, 14%, 56%);
+}
+
+button{
+    border: none;
+    width: 100%;
+    padding: 8px;
+    margin-top: 2rem;
+    border-radius: 5px;
+    background-color: hsl(186, 14%, 43%);
+    color: hsl(189, 41%, 97%);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+button:hover{
+    background-color: hsl(172, 67%, 45%);
+    color: hsl(183, 100%, 15%);
+}
+
+.clickActived{
+    transform: scale(1.07);
+}
+
+.errNumberPeople{
+    outline: 2px solid red;
+}
+
+.R{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: hsl(172, 67%, 45%);
+}
+
+@media screen and (max-width: 900px){
+    .criador{
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        rotate: 90deg;
+        margin: 0;
+        z-index: 2;
+    }
+    section{
+        flex-direction: column;
+        width: 350px;
+        padding: 1.25rem;
+    }
+    .layout-1{
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .layout-2{
+        width: 100%;
+        padding: 1.5rem;
+    }
+    .gojeta, .total{
+        margin-bottom: 1rem;
+    }
+    button{
+        margin-top: 1rem;
+    }
+}
+@media screen and (max-width: 550px){
+    .criador{
+        right: -3.5rem;
+    }
+}
+
+@media screen and (max-width: 400px){
+    section{
+        width: calc(100% - 4rem);
+        margin: 0 auto;
+        padding: 1rem;
+    }
+    .porcent-custom{
+        grid-template-columns: 1fr 1fr 1fr ;
+    }
+    .gojeta, .total{
+        flex-direction: column;
+        margin-bottom: 8px;
+    }
+    .layout-bloco > h5{
+        margin-bottom: 4px;
+    }
+    .layout-bloco, .layout-1 {
+        margin-bottom: 8px;
+    }
+    .layout-2{
+        padding: 0.75rem;
+    }
+
+}
+@media screen and (max-width: 330px){
+    section{
+        width: calc(100% - 2rem);
+        scale: 0.9;
+    }
+}
