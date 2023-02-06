@@ -20,12 +20,17 @@
 }
 
 body{
+
+    background-color: hsl(185, 41%, 84%)
+}
+
+main{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 100vh;
-    background-color: hsl(185, 41%, 84%)
 }
 
 .criador{
@@ -188,7 +193,7 @@ button:hover{
 }
 
 .clickActived{
-    transform: scale(1.07);
+    transform: scale(1.05);
 }
 
 .errNumberPeople{
