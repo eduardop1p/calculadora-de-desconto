@@ -235,6 +235,12 @@ button:hover{
     .criador{
         right: -3.5rem;
     }
+    button{
+        margin-top: 0;
+    }
+    .layout-bloco, .layout-1 {
+        margin-bottom: 8px;
+    }
 }
 
 @media screen and (max-width: 400px){
@@ -248,22 +254,14 @@ button:hover{
     }
     .gojeta, .total{
         flex-direction: column;
-        margin-bottom: 8px;
+        margin-bottom: 5px;
     }
     .layout-bloco > h5{
         margin-bottom: 4px;
     }
-    .layout-bloco, .layout-1 {
-        margin-bottom: 8px;
-    }
+
     .layout-2{
         padding: 0.75rem;
     }
 
-}
-@media screen and (max-width: 330px){
-    section{
-        width: calc(100% - 2rem);
-        scale: 0.9;
-    }
 }
