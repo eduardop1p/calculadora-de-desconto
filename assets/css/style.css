@@ -50,6 +50,10 @@ main{
     height: 100vh;
 }
 
+form{
+    border-radius: 5px;
+}
+
 .criador{
     font-size: 10px;
     text-align: center;
@@ -107,9 +111,10 @@ section{
 
 .layout-2{
     width: 340px;
-    padding: 2rem;
+    padding: 1.5rem;
     background-color: hsl(183, 100%, 15%);
     border-radius: 10px;
+    position: relative;
 }
 
 .percentage-custom{
@@ -187,7 +192,7 @@ input[type='number']:focus:not(.inputError){
 .resultValues{
     display: flex;
     align-items: center;
-    margin-left: 8px;
+    margin-left: 10px;
 }
 
 .gojeta h5, .total h5{
@@ -201,17 +206,17 @@ input[type='number']:focus:not(.inputError){
 
 button{
     border: none;
-    width: calc(100% - 8px);
-    padding: 8px;
-    display: block;
-    margin: 1rem auto 0;
+    width: calc(100% - 3rem);
+    padding: 10px;
+    position: absolute;
+    bottom: 1.5rem;
     border-radius: 5px;
     background-color: hsl(186, 14%, 43%);
     color: hsl(189, 41%, 97%);
     font-weight: 700;
     cursor: pointer;
     outline: none;
-    transition: all 0.2s ease-in-out;
+    transition: scale 0.2s linear, color 0.2s linear, background 0.2s linear;
 }
 button:hover{
     background-color: hsl(172, 67%, 45%);
@@ -255,11 +260,16 @@ button:hover{
     .layout-2{
         width: 100%;
         padding: 0.75rem;
+        height: 230px;
     }
 
     button{
-        margin-top: 8px;
-        width: calc(100% - 1rem);
+        bottom: 0.75rem;
+        left:0;
+        right:0;
+        margin-left:auto;
+        margin-right:auto;
+        width: calc(100% - 2rem);
     }
     .layout-bloco, .layout-1 {
         margin-bottom: 8px;
@@ -275,6 +285,9 @@ button:hover{
 
 }
 @media screen and (max-width: 550px){
+    main{
+        height: 105vh;
+    }
     .criador{
         right: -3.5rem;
     }
@@ -288,8 +301,9 @@ button:hover{
         padding: 1rem;
     }
     .percentage-custom{
-        grid-template-columns: 1fr 1fr 1fr ;
+        grid-template: 30px 30px 30px / 1fr 1fr 1fr ;
     }
 
 
 }
+

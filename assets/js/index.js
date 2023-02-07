@@ -2,6 +2,7 @@ class AppCalcularDesconto{
     constructor(){
         this.section = document.querySelector('section')
         this.inputCalcular = this.section.querySelector('#calcular')
+        this.customInput = this.section.querySelector('#customInput')
         this.percentageAtual = this.section.querySelector('.pocentagemAtual')
         this.numberPeople = this.section.querySelector('#numberPeople')
         this.calcularTotal = this.section.querySelector('#calcularTotal')
@@ -11,7 +12,7 @@ class AppCalcularDesconto{
     }
     init(){
         this.calcularClick()
-        this.calcularKeyEnter()
+        this.calcularOnSubmit()
         this.customPercentage()
 
     }
@@ -22,38 +23,55 @@ class AppCalcularDesconto{
         this.inputCalcular.classList.remove('inputError')
         this.numberPeople.classList.remove('inputError')
 
+        let valid = true
+
         if(!validate.isNumber(inputValueCalcular)) {
             this.inputCalcular.classList.add('inputError')
-            this.err('Digete um valor maior que 0 para os campo "Valor da conta".')
-            return
+            this.err('Digete um valor maior que 0 para o campo "Valor da conta".')
+            valid = false
         }
         if(!validate.isNumber(inputValuePeople)) {
             this.numberPeople.classList.add('inputError')
             this.err('Digete um valor maior que 0 para o campo "Número de pessoas a pagar a conta".')
-            return
+            valid = false
         }
         if(!this.numberPercentage) {
             this.err('Escolha uma porcentagem maior que 0.')
-            return
+            valid = false
         }
-        this.totalAPagarPorPessoa = (inputValueCalcular * (this.numberPercentage / 100) / inputValuePeople) 
-        this.total = inputValueCalcular * (this.numberPercentage / 100) 
+
+        if(!valid) return
+
+        this.total = inputValueCalcular - (inputValueCalcular * (this.numberPercentage / 100))
+        this.totalAPagarPorPessoa = this.total / inputValuePeople
 
         const valorAPagarPorPessoa = this.section.querySelector('.valor-gojeta')
         const valorTotalAPagar = this.section.querySelector('.valor-total')
+
         valorAPagarPorPessoa.innerText = this.totalAPagarPorPessoa.toFixed(2)
         valorTotalAPagar.innerText = this.total.toFixed(2)
     }
     calcularClick(){
         this.calcularTotal.addEventListener('click', () => this.calcular())
     }
-    calcularKeyEnter(){
-        document.onkeyup = event => event.keyCode === 13 && this.calcular()
+    calcularOnSubmit(){
+        this.inputCalcular.parentElement.addEventListener('submit', (event) => {
+            event.preventDefault()
+             this.calcular()
+        })
+        this.customInput.parentElement.addEventListener('submit', (event) => {
+            event.preventDefault()
+             this.calcular()
+        })
+        this.numberPeople.parentElement.addEventListener('submit', (event) => {
+            event.preventDefault()
+             this.calcular()
+        })
     }
     customPercentage(){
         this.section.querySelectorAll('.percentage').forEach(percentage => percentage.addEventListener('click', event => {
             this.removeClassPocentActived() 
-            const customInput = this.section.querySelector('#customInput')
+
             if(customInput.value) customInput.value = ''      
 
             const targetEvent = event.target;
@@ -62,7 +80,7 @@ class AppCalcularDesconto{
             this.percentageAtual.innerText = innerText
             this.numberPercentage = parseInt(innerText.slice(0, -1))
         }))
-        this.section.querySelector('#customInput').addEventListener('focusout', event => {
+        this.customInput.addEventListener('focusout', event => {
             const { value } = event.target;
             if(!value) return
             
@@ -70,11 +88,11 @@ class AppCalcularDesconto{
             this.percentageAtual.innerText = `${value}%`
             this.numberPercentage = parseInt(value)
         })
-        this.section.querySelector('#customInput').addEventListener('input', event => {
+        this.customInput.addEventListener('input', event => {
             const { value } = event.target;
             if(value.length > 5 )  event.target.value = value.slice(0, 5)
         })
-        this.section.querySelector('#calcular').addEventListener('input', event => {
+        this.inputCalcular.addEventListener('input', event => {
             const { value } = event.target;
             if(value.length > 8 )  event.target.value = value.slice(0, 8)
         })
