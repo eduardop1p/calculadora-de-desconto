@@ -17,7 +17,24 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Space Mono", monospace;
+    border: none;
+    outline: none;
 }
+
+/* removendo arrows do type number */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* removendo arrows do type number */
 
 body{
 
@@ -45,6 +62,7 @@ section{
     display: flex;
     justify-content: space-between;
     width: 750px;
+    height: 300px;
     background-color: hsl(0, 0%, 100%);
     border-radius: 1rem;
 }
@@ -65,18 +83,15 @@ section{
 
 .layout-1 img{
     width: 10px;
+    left: 1rem;
+    position: absolute;
+    z-index: 1;
 }
 
 .calculo-input, .number-people{
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    border-radius: 5px;
-    padding: 7px 14px;
-    background-color: hsl(189, 41%, 97%);
-}
-.inputFocus{
-    outline: 2px solid hsl(172, 67%, 45%);
 }
 
 .calculo-input > :last-child, .number-people > :last-child{
@@ -97,13 +112,13 @@ section{
     border-radius: 10px;
 }
 
-.porcent-custom{
+.percentage-custom{
     display: grid;
     grid-template: 30px 30px / 70px 70px 70px 70px;;
     grid-gap: 10px;
 }
 
-.porcent{
+.percentage{
     border-radius: 3px;
     cursor: pointer;
     display: flex;
@@ -113,34 +128,42 @@ section{
     color: hsl(0, 0%, 100%);
     background-color: hsl(183, 100%, 15%);
     transition: all 0.2s  ease-in-out;
+    border-radius: 5px;  
 }
-.pocentActived{ 
+.pocentActived, .percentage:hover{ 
     color: hsl(183, 100%, 15%);
     background-color: hsl(172, 67%, 45%);
 
 }
 
-.custom{
-    background-color: hsl(189, 41%, 97%);
-    border-radius: 3px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+#calcular, #numberPeople{
+    color: hsl(183, 100%, 15%);
+    text-align: right;
+    width: 100%;
+    font-size: 1rem;
     font-weight: 700;
+    border-radius: 5px;
+    padding: 8px 1rem;
+    background-color: hsl(189, 41%, 97%);
 }
 #customInput{
     color: hsl(183, 100%, 15%);
     text-align: center;
     width: 100%;
-    border: none;
-    outline: none;
-    font-size: 17px;
+    height: 100%;
+    border-radius: 5px;
+    font-size: 1rem;
     font-weight: 700;
     background-color: hsl(189, 41%, 97%);
 }
-.customInFocus{
-    outline: 2px solid hsl(172, 67%, 45%)
+input[type='number']:focus:not(.inputError){
+    box-shadow: 0 0 0 2px hsl(172, 67%, 45%);
+    border-radius: 5px;  
+}
+.inputError{
+    box-shadow: 0 0 0 2px red;
+    border-radius: 5px;  
 }
 
 .gojeta, .total{
@@ -164,6 +187,7 @@ section{
 .resultValues{
     display: flex;
     align-items: center;
+    margin-left: 8px;
 }
 
 .gojeta h5, .total h5{
@@ -177,19 +201,22 @@ section{
 
 button{
     border: none;
-    width: 100%;
+    width: calc(100% - 8px);
     padding: 8px;
-    margin-top: 2rem;
+    display: block;
+    margin: 1rem auto 0;
     border-radius: 5px;
     background-color: hsl(186, 14%, 43%);
     color: hsl(189, 41%, 97%);
     font-weight: 700;
     cursor: pointer;
+    outline: none;
     transition: all 0.2s ease-in-out;
 }
 button:hover{
     background-color: hsl(172, 67%, 45%);
     color: hsl(183, 100%, 15%);
+    scale: 1.05;
 }
 
 .clickActived{
@@ -219,33 +246,39 @@ button:hover{
     section{
         flex-direction: column;
         width: 350px;
-        padding: 1.25rem;
+        padding: 1rem;
+        height: auto;
     }
     .layout-1{
         width: 100%;
-        margin-bottom: 1rem;
     }
     .layout-2{
         width: 100%;
-        padding: 1.5rem;
+        padding: 0.75rem;
+    }
+
+    button{
+        margin-top: 8px;
+        width: calc(100% - 1rem);
+    }
+    .layout-bloco, .layout-1 {
+        margin-bottom: 8px;
     }
     .gojeta, .total{
-        margin-bottom: 1rem;
+        flex-direction: column;
+        margin-bottom: 5px;
     }
-    button{
-        margin-top: 1rem;
+
+    .layout-bloco > h5{
+        margin-bottom: 4px;
     }
+
 }
 @media screen and (max-width: 550px){
     .criador{
         right: -3.5rem;
     }
-    button{
-        margin-top: 0;
-    }
-    .layout-bloco, .layout-1 {
-        margin-bottom: 8px;
-    }
+
 }
 
 @media screen and (max-width: 400px){
@@ -254,19 +287,9 @@ button:hover{
         margin: 0 auto;
         padding: 1rem;
     }
-    .porcent-custom{
+    .percentage-custom{
         grid-template-columns: 1fr 1fr 1fr ;
     }
-    .gojeta, .total{
-        flex-direction: column;
-        margin-bottom: 5px;
-    }
-    .layout-bloco > h5{
-        margin-bottom: 4px;
-    }
 
-    .layout-2{
-        padding: 0.75rem;
-    }
 
 }

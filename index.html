@@ -16,29 +16,29 @@
           <h5>Valor da conta</h5>
           <div class="calculo-input">
             <img src="./assets/images/icon-dollar.svg" alt="">
-            <input type="text" name="calcular" id="calcular" placeholder="0">
+            <input type="number" name="calcular" id="calcular" placeholder="0">
           </div>
         </div>
   
         <div class="layout-bloco">
-          <h5>Desconto de gorjeta atual <span class="pocentagemAtual">0%</span></h5>
-          <div class="porcent-custom">
-            <div class="porcent">5%</div>
-            <div class="porcent">10%</div>
-            <div class="porcent">15%</div>
-            <div class="porcent">25%</div>
-            <div class="porcent">30%</div>
-            <div class="porcent">50%</div>
-            <div class="porcent">75%</div>
-            <div class="custom"><input type="text" name="custom" id="customInput" placeholder="Custom"></div>
+          <h5>Desconto atual sobre o valor <span class="pocentagemAtual">0%</span></h5>
+          <div class="percentage-custom">
+            <div class="percentage">5%</div>
+            <div class="percentage">10%</div>
+            <div class="percentage">15%</div>
+            <div class="percentage">25%</div>
+            <div class="percentage">30%</div>
+            <div class="percentage">50%</div>
+            <div class="percentage">75%</div>
+            <input maxlength="5" type="number" name="custom" id="customInput" placeholder="Custom">
           </div>
         </div>
   
         <div class="layout-bloco">
-          <h5>Numero de pessoas a dar gorjeta</h5>
+          <h5>Número de pessoas a pagar a conta</h5>
           <div class="number-people">
             <img src="./assets/images/icon-person.svg" alt="">
-            <input type="text" name="numero pessoas" id="numberPeople" placeholder="0">
+            <input type="number" name="numero pessoas" id="numberPeople" placeholder="0">
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
       <div class="layout-2">
         <div class="gojeta">
           <div>
-            <h5>Valor da gorjeta</h5>
+            <h5>Valor da conta</h5>
             <h6 class="person">/ A pagar por pessoa</h6>
           </div>
           <div class="resultValues"><span class="R">R</span>
@@ -58,7 +58,7 @@
         <div class="total">
           <div>
             <h5>Valor total</h5>
-            <h6 class="person">/ A pagar de gorjetas</h6>
+            <h6 class="person">/ A pagar da conta</h6>
           </div>
           <div class="resultValues"><span class="R">R</span>
             <img src="./assets/images/icon-dollar copy.svg" alt="">
@@ -70,6 +70,7 @@
       </div>
     </section>
   </main>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
   <script src="./assets/js/index.js"></script>
 </body>
 </html>
