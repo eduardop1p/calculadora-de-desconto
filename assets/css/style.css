@@ -32,6 +32,7 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+  display: block;
 }
 
 /* removendo arrows do type number */
@@ -167,15 +168,11 @@ section{
     background-color: hsl(189, 41%, 97%);
 }
 input[type='number']:focus:not(.inputError){
-    -webkit-appearance: none;
     box-shadow: 0 0 0 2px hsl(172, 67%, 45%);
-    -webkit-box-shadow: 0 0 0 2px hsl(172, 67%, 45%);
     border-radius: 5px;  
 }
 .inputError{
-    -webkit-appearance: none;
     box-shadow: 0 0 0 2px red;
-    -webkit-box-shadow: 0 0 0 2px red;
     border-radius: 5px;  
 }
 
