@@ -168,12 +168,12 @@ section{
 }
 input[type='number']:focus:not(.inputError){
     box-shadow: 0 0 0 2px hsl(172, 67%, 45%);
+    -webkit-box-shadow: 0 0 0 2px hsl(172, 67%, 45%);
     border-radius: 5px;  
 }
 .inputError{
     box-shadow: 0 0 0 2px red;
     -webkit-box-shadow: 0 0 0 2px red;
-    /* border: 2px solid red; */
     border-radius: 5px;  
 }
 
