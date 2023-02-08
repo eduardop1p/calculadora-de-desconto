@@ -53,6 +53,7 @@ main{
 form{
     border-radius: 5px;
     width: 100%;
+    -webkit-appearance: none;
 }
 
 .criador{
@@ -158,11 +159,12 @@ section{
     background-color: hsl(189, 41%, 97%);
 }
 input[type='number']:focus:not(.inputError){
+    /* transition: box-shadow 0.1s linear; */
+
     box-shadow: 0 0 0 2px hsl(172, 67%, 45%);
     border-radius: 5px;  
 }
 .inputError{
-    /* border: 2px solid red; */
     box-shadow: 0 0 0 2px red;
     border-radius: 5px;  
 }
