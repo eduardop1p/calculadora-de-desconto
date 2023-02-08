@@ -32,6 +32,7 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+  -webkit-appearance: none;
 }
 
 /* removendo arrows do type number */
@@ -53,7 +54,6 @@ main{
 form{
     border-radius: 5px;
     width: 100%;
-    -webkit-appearance: none;
 }
 
 .criador{
