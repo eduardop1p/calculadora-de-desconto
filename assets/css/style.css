@@ -32,7 +32,6 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
-  -webkit-appearance: none !important;
 }
 
 /* removendo arrows do type number */
@@ -172,7 +171,8 @@ input[type='number']:focus:not(.inputError){
     border-radius: 5px;  
 }
 .inputError{
-    box-shadow: 0 0 0 2px red;
+    /* border: 1px solid red; */
+    box-shadow: 0 0 0 2px red !important;
     border-radius: 5px;  
 }
 
