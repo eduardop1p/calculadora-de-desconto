@@ -52,6 +52,7 @@ main{
 
 form{
     border-radius: 5px;
+    width: 100%;
 }
 
 .criador{
@@ -98,16 +99,6 @@ section{
     align-items: center;
 }
 
-.calculo-input > :last-child, .number-people > :last-child{
-    text-align: right;
-    width: 100%;
-    border: none;
-    outline: none;
-    font-size: 17px;
-    color: hsl(188, 10%, 43%);
-    font-weight: 700;
-    background-color: hsl(189, 41%, 97%);
-}
 
 .layout-2{
     width: 340px;
@@ -171,8 +162,8 @@ input[type='number']:focus:not(.inputError){
     border-radius: 5px;  
 }
 .inputError{
-    /* border: 1px solid red; */
-    box-shadow: 0 0 0 2px red !important;
+    /* border: 2px solid red; */
+    box-shadow: 0 0 0 2px red;
     border-radius: 5px;  
 }
 
