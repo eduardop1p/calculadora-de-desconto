@@ -45,10 +45,12 @@ class AppCalcularDesconto{
             this.percentage.forEach(percentage => percentage.classList.add('percentageError'))
             this.customInput.classList.add('inputError')
             this.err('Escolha uma porcentagem maior que 0.')
+            this.customInputSubmit = false
             valid = false
         }
 
         if(!valid) return
+        this.customInputSubmit = false
 
         this.total = inputValueCalcular - (inputValueCalcular * (this.numberPercentage / 100))
         this.totalAPagarPorPessoa = this.total / inputValuePeople
@@ -76,6 +78,8 @@ class AppCalcularDesconto{
             const customInputValue = event.target.querySelector('input[type="number"]').value
             if(!customInputValue) return
 
+            this.customInputSubmit = true
+
             this.section.querySelectorAll('.percentage').forEach(percentage => percentage.classList.remove('percentageActived'))
             this.numberPercentage = parseFloat(customInputValue)
 
@@ -100,6 +104,7 @@ class AppCalcularDesconto{
         }))
         this.customInput.addEventListener('focusout', event => { // bug aqui
             const value  = parseInt(event.target.value);
+            if(this.customInputSubmit) return
             if(value == 0) {
                 this.customInput.blur()
                 this.percentage.forEach(percentage => percentage.classList.add('percentageError'))
