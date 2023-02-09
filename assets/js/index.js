@@ -41,16 +41,13 @@ class AppCalcularDesconto{
         }
 
         if(!this.numberPercentage) {
-            this.customInput.blur()
             this.percentage.forEach(percentage => percentage.classList.add('percentageError'))
             this.customInput.classList.add('inputError')
             this.err('Escolha uma porcentagem maior que 0.')
-            this.customInputSubmit = false
             valid = false
         }
 
         if(!valid) return
-        this.customInputSubmit = false
 
         this.total = inputValueCalcular - (inputValueCalcular * (this.numberPercentage / 100))
         this.totalAPagarPorPessoa = this.total / inputValuePeople
@@ -78,10 +75,9 @@ class AppCalcularDesconto{
             const customInputValue = event.target.querySelector('input[type="number"]').value
             if(!customInputValue) return
 
-            this.customInputSubmit = true
-
-            this.section.querySelectorAll('.percentage').forEach(percentage => percentage.classList.remove('percentageActived'))
+            this.removeClassPocentActived()
             this.numberPercentage = parseFloat(customInputValue)
+            this.percentageAtual.innerText = `${customInputValue}%`
 
             this.calcular()
         })
@@ -102,21 +98,6 @@ class AppCalcularDesconto{
             this.percentageAtual.innerText = innerText
             this.numberPercentage = parseInt(innerText.slice(0, -1))
         }))
-        this.customInput.addEventListener('focusout', event => { // bug aqui
-            const value  = parseInt(event.target.value);
-            if(this.customInputSubmit) return
-            if(value == 0) {
-                this.customInput.blur()
-                this.percentage.forEach(percentage => percentage.classList.add('percentageError'))
-                this.customInput.classList.add('inputError')
-                this.err('Escolha uma porcentagem maior que 0.')
-                return
-            }
-            if(!value) return
-            
-            this.removeClassPocentActived()
-            this.percentageAtual.innerText = `${value}%`
-        })
         this.customInput.addEventListener('input', event => {
             const { value } = event.target;
             if(value.length > 5 )  event.target.value = value.slice(0, 5)
