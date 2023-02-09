@@ -21,11 +21,7 @@ class AppCalcularDesconto{
         const inputValueCalcular = parseInt(this.inputCalcular.value)
         const inputValuePeople = parseInt(this.numberPeople.value)
 
-
-        this.inputCalcular.classList.remove('inputError')
-        this.numberPeople.classList.remove('inputError')
-        this.customInput.classList.remove('inputError')
-        this.percentage.forEach(percentage => percentage.classList.remove('percentageError'))
+        this.removeClass()
 
         let valid = true
 
@@ -63,7 +59,15 @@ class AppCalcularDesconto{
         valorTotalAPagar.innerText = this.total.toFixed(2)
     }
     calcularClick(){
-        this.calcularTotal.addEventListener('click', () => this.calcular())
+        this.calcularTotal.addEventListener('click', () => {
+            const customInputValue = parseInt(this.customInput.value)
+            if(customInputValue){
+                this.numberPercentage = parseFloat(customInputValue)
+                this.percentageAtual.innerText = `${customInputValue}%`
+            }
+
+            this.calcular()
+        })
     }
     calcularOnSubmit(){
         this.inputCalcular.parentElement.addEventListener('submit', (event) => {
@@ -72,12 +76,11 @@ class AppCalcularDesconto{
         })
         this.customInput.parentElement.addEventListener('submit', (event) => {
             event.preventDefault()
-            const customInputValue = event.target.querySelector('input[type="number"]').value
+            const customInputValue = this.customInput.value
             if(!customInputValue) return
 
-            this.removeClassPocentActived()
             this.numberPercentage = parseFloat(customInputValue)
-            this.percentageAtual.innerText = `${customInputValue}%`
+            if(this.numberPercentage !== 0) this.percentageAtual.innerText = `${customInputValue}%`
 
             this.calcular()
         })
@@ -88,7 +91,7 @@ class AppCalcularDesconto{
     }
     customPercentage(){
         this.section.querySelectorAll('.percentage').forEach(percentage => percentage.addEventListener('click', event => {
-            this.removeClassPocentActived() 
+            this.removeClass() 
 
             if(customInput.value) customInput.value = ''      
 
@@ -114,9 +117,12 @@ class AppCalcularDesconto{
     err(errText){
         return setTimeout(() => alert(errText), 300)
     }
-    removeClassPocentActived(){
-        this.section.querySelectorAll('.percentage').forEach(percentage => percentage.classList.remove('percentageActived'))
+    removeClass(){
+        this.inputCalcular.classList.remove('inputError')
+        this.numberPeople.classList.remove('inputError')
+        this.customInput.classList.remove('inputError')
         this.percentage.forEach(percentage => percentage.classList.remove('percentageError'))
+        this.section.querySelectorAll('.percentage').forEach(percentage => percentage.classList.remove('percentageActived'))
         this.customInput.classList.remove('inputError')
     }
 
