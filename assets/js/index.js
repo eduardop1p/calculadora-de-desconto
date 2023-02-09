@@ -7,6 +7,7 @@ class AppCalcularDesconto{
         this.numberPeople = this.section.querySelector('#numberPeople')
         this.calcularTotal = this.section.querySelector('#calcularTotal')
         this.percentage = this.section.querySelectorAll('.percentage')
+        this.numberPercentage = 0
         this.totalAPagarPorPessoa = 0
         this.total = 0
     }
@@ -19,7 +20,6 @@ class AppCalcularDesconto{
     calcular(){
         const inputValueCalcular = parseInt(this.inputCalcular.value)
         const inputValuePeople = parseInt(this.numberPeople.value)
-        const numberPercentage = parseInt(this.customInput.value)
 
 
         this.inputCalcular.classList.remove('inputError')
@@ -39,7 +39,9 @@ class AppCalcularDesconto{
             this.err('Digete um valor maior que 0 para o campo "Número de pessoas a pagar a conta".')
             valid = false
         }
-        if(!numberPercentage) {
+
+        if(!this.numberPercentage) {
+            this.customInput.blur()
             this.percentage.forEach(percentage => percentage.classList.add('percentageError'))
             this.customInput.classList.add('inputError')
             this.err('Escolha uma porcentagem maior que 0.')
@@ -48,7 +50,7 @@ class AppCalcularDesconto{
 
         if(!valid) return
 
-        this.total = inputValueCalcular - (inputValueCalcular * (numberPercentage / 100))
+        this.total = inputValueCalcular - (inputValueCalcular * (this.numberPercentage / 100))
         this.totalAPagarPorPessoa = this.total / inputValuePeople
         if(!this.totalAPagarPorPessoa || !this.total) {
             this.err('Calculo inválido, por favor tente novalmente.')
@@ -67,15 +69,21 @@ class AppCalcularDesconto{
     calcularOnSubmit(){
         this.inputCalcular.parentElement.addEventListener('submit', (event) => {
             event.preventDefault()
-             this.calcular()
+            this.calcular()
         })
         this.customInput.parentElement.addEventListener('submit', (event) => {
             event.preventDefault()
-             this.calcular()
+            const customInputValue = event.target.querySelector('input[type="number"]').value
+            if(!customInputValue) return
+
+            this.section.querySelectorAll('.percentage').forEach(percentage => percentage.classList.remove('percentageActived'))
+            this.numberPercentage = parseFloat(customInputValue)
+
+            this.calcular()
         })
         this.numberPeople.parentElement.addEventListener('submit', (event) => {
             event.preventDefault()
-             this.calcular()
+            this.calcular()
         })
     }
     customPercentage(){
@@ -88,10 +96,12 @@ class AppCalcularDesconto{
             targetEvent.classList.add('percentageActived')
             const { innerText } = targetEvent;
             this.percentageAtual.innerText = innerText
+            this.numberPercentage = parseInt(innerText.slice(0, -1))
         }))
-        this.customInput.addEventListener('focusout', event => {
+        this.customInput.addEventListener('focusout', event => { // bug aqui
             const value  = parseInt(event.target.value);
             if(value == 0) {
+                this.customInput.blur()
                 this.percentage.forEach(percentage => percentage.classList.add('percentageError'))
                 this.customInput.classList.add('inputError')
                 this.err('Escolha uma porcentagem maior que 0.')
@@ -109,6 +119,10 @@ class AppCalcularDesconto{
         this.inputCalcular.addEventListener('input', event => {
             const { value } = event.target;
             if(value.length > 8 )  event.target.value = value.slice(0, 8)
+        })
+        this.numberPeople.addEventListener('input', event => {
+            const { value } = event.target;
+            if(value.length > 5 )  event.target.value = value.slice(0, 5)
         })
     }
     err(errText){
