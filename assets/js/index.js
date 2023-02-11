@@ -71,7 +71,12 @@ class AppCalcularDesconto{
     }
     calcularClick(){
         this.calcularTotal.addEventListener('click', () => {
-            if(this.customInput.value) this.numberPercentage = parseInt(this.customInput.value)
+            let percentageActivedController = false
+            console.log(percentageActivedController)
+            this.section.querySelectorAll('.percentage').forEach(percentage => {
+                if(percentage.classList.contains('percentageActived')) percentageActivedController = true
+            })
+            if(!percentageActivedController || this.customInput.value) this.numberPercentage = parseInt(this.customInput.value)
             this.calcular()
         })
     }
