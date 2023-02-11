@@ -71,7 +71,7 @@ class AppCalcularDesconto{
     }
     calcularClick(){
         this.calcularTotal.addEventListener('click', () => {
-            if(this.customInput.value.length) this.numberPercentage = parseInt(this.customInput.value)
+            if(this.customInput.value) this.numberPercentage = parseInt(this.customInput.value)
             this.calcular()
         })
     }
